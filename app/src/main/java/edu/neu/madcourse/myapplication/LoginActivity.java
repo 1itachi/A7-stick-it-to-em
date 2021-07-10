@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String SERVER_KEY = "AAAAMuvSWzI:APA91bGmSW15pFeh-c2VyDuke4Oz6YDBSGxiFZFObdDuXsbUe6ecSPZnIp8WY1slnlMNXYPaxREh03bgxqkjH3ecTrDk2q48I7mkpq8TbuZC-1JzgCL_TRFChePN6MFKcTTa3TOh9siO";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
