@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
     <string name="sticker_1">Sticker 1</string>
     <string name="sticker_2">Sticker 2</string>
     <string name="sticker_3">Sticker 3</string>
@@ -12,4 +11,5 @@
     <string name="Login">Login</string>
     <string name="password_prompt">Enter Password</string>
     <string name="chat_screen_indication">See chat history or send a new sticker</string>
+    <string name="see_all_stickers">See All Stickers</string>
 </resources>
