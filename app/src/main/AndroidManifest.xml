@@ -21,6 +21,11 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".DisplayStickers"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
