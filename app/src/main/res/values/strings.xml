@@ -7,4 +7,8 @@
     <string name="sticker_5">Sticker 5</string>
     <string name="sticker_6">Sticker 6</string>
     <string name="click_sticker_to_send">Click sticker to send.</string>
+    <string name="app_name">Stick It To Em</string>
+    <string name="username_prompt">Enter Username</string>
+    <string name="Login">Login</string>
+    <string name="password_prompt">Enter Password</string>
 </resources>
