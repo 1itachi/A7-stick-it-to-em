@@ -12,4 +12,6 @@
     <string name="password_prompt">Enter Password</string>
     <string name="chat_screen_indication">See chat history or send a new sticker</string>
     <string name="see_all_stickers">See All Stickers</string>
+    <string name="username">Username</string>
+    <string name="send_sticker">Send Sticker</string>
 </resources>
