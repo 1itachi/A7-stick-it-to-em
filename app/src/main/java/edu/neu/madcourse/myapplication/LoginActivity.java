@@ -38,13 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mMessage = mDatabase.child("message");
 
-        Button testButton = (Button) findViewById(R.id.button2);
-        TextView displayMessage = (TextView) findViewById(R.id.textView2);
-
-        testButton.setOnClickListener((v) -> {
-            mMessage.setValue("Value changed!!");
-        });
-
             // Generate the token for the first time, then no need to do later
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                 @Override
