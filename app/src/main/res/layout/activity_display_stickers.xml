@@ -37,6 +37,8 @@
 
             <ImageButton
                 android:id="@+id/sticker12"
+                android:tag="sticker12"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker10"
@@ -50,6 +52,8 @@
 
             <ImageButton
                 android:id="@+id/sticker13"
+                android:tag="sticker13"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker12"
@@ -63,6 +67,8 @@
 
             <ImageButton
                 android:id="@+id/sticker14"
+                android:tag="sticker14"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker13"
@@ -76,6 +82,8 @@
 
             <ImageButton
                 android:id="@+id/sticker15"
+                android:tag="sticker15"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker14"
@@ -89,6 +97,8 @@
 
             <ImageButton
                 android:id="@+id/sticker2"
+                android:tag="sticker2"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker15"
@@ -102,6 +112,8 @@
 
             <ImageButton
                 android:id="@+id/sticker3"
+                android:tag="sticker3"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker2"
@@ -115,6 +127,8 @@
 
             <ImageButton
                 android:id="@+id/sticker4"
+                android:tag="sticker4"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker3"
@@ -128,6 +142,8 @@
 
             <ImageButton
                 android:id="@+id/sticker5"
+                android:tag="sticker5"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker4"
@@ -141,6 +157,8 @@
 
             <ImageButton
                 android:id="@+id/sticker6"
+                android:tag="sticker6"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker5"
@@ -154,6 +172,8 @@
 
             <ImageButton
                 android:id="@+id/sticker7"
+                android:tag="sticker7"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker6"
@@ -167,6 +187,8 @@
 
             <ImageButton
                 android:id="@+id/sticker8"
+                android:tag="sticker8"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker7"
@@ -180,6 +202,8 @@
 
             <ImageButton
                 android:id="@+id/sticker9"
+                android:tag="sticker9"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sticker8"
