@@ -2,18 +2,64 @@ package edu.neu.madcourse.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+public class LoginActivity extends AppCompatActivity {
+    private static String TAG = LoginActivity.class.getSimpleName();
     private static final String SERVER_KEY = "AAAAMuvSWzI:APA91bGmSW15pFeh-c2VyDuke4Oz6YDBSGxiFZFObdDuXsbUe6ecSPZnIp8WY1slnlMNXYPaxREh03bgxqkjH3ecTrDk2q48I7mkpq8TbuZC-1JzgCL_TRFChePN6MFKcTTa3TOh9siO";
+    // This is the client registration token
+    private static String CLIENT_REGISTRATION_TOKEN;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mMessage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mMessage = mDatabase.child("message");
+
+        Button testButton = (Button) findViewById(R.id.button2);
+        TextView displayMessage = (TextView) findViewById(R.id.textView2);
+
+        testButton.setOnClickListener((v) -> {
+            mMessage.setValue("Value changed!!");
+        });
+
+            // Generate the token for the first time, then no need to do later
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                @Override
+                public void onComplete(@NonNull Task<String> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "Something is wrong!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (CLIENT_REGISTRATION_TOKEN == null) {
+                            CLIENT_REGISTRATION_TOKEN = task.getResult();
+                        }
+                        Log.e("CLIENT_REGISTRATION_TOKEN", CLIENT_REGISTRATION_TOKEN);
+                        Toast.makeText(LoginActivity.this, "CLIENT_REGISTRATION_TOKEN Existed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
     }
 
     // called upon clicking Login button
