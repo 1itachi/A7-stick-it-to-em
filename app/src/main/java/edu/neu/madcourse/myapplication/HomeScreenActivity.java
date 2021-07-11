@@ -33,7 +33,10 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         setContentView(R.layout.activity_home_screen);
         username = getIntent().getStringExtra("USERNAME");
 
-        UserCard user = new UserCard(username);
+        TextView user_info = (TextView) findViewById(R.id.userInfoTextView);
+        user_info.append("Hello " + username + ", send a sticker to any of the app users or see history");
+
+      UserCard user = new UserCard(username);
         //reference to firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //get user reference
@@ -79,6 +82,7 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
 
         Intent intent = new Intent(this, ChatHistoryActivity.class);
         intent.putExtra("friend_username", userCards.get(position).getUsername());
+        intent.putExtra("current_user_username", username);
 
         startActivity(intent);
     }
@@ -89,6 +93,7 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
 
         Intent intent = new Intent(this, DisplayStickers.class);
         intent.putExtra("friend_username", userCards.get(position).getUsername());
+        intent.putExtra("current_user_username", username);
 
         startActivity(intent);
     }
