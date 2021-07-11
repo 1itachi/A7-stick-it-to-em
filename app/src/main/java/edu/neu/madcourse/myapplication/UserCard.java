@@ -10,5 +10,5 @@ public class UserCard {
     public String getUsername() {
         return username;
     }
-
 }
+
