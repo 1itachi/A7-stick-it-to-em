@@ -67,13 +67,16 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("Login button clicked");
 
         TextView usernameTextView = (TextView) findViewById(R.id.editUsername);
-        String username = usernameTextView.getText().toString();
+        String username = usernameTextView.getText().toString().replaceAll("\\s", "");
 
-        if (!userExists(username)) {
-            createNewUser(username);
+        if (username.length() == 0) {
+            Toast myToast = Toast.makeText(this, "Enter Username!", Toast.LENGTH_LONG);
+            myToast.show();
+        }else {
+            Intent intent1 = new Intent(LoginActivity.this, HomeScreenActivity.class);
+            intent1.putExtra("USERNAME", username);
+            startActivity(intent1);
         }
-
-        startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
     }
 
     // saves the new user to database
