@@ -46,8 +46,9 @@ public class DisplayStickers extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mChat = mDatabase.child("chats");
 
-        //get time
-        ChatCard chat = new ChatCard(sender, receiver, sticker_tag,epochTime );
+        Context c = getApplicationContext();
+        int sticker_id = c.getResources().getIdentifier("drawable/"+sticker_tag, null, c.getPackageName());
+        ChatCard chat = new ChatCard(sender, receiver, sticker_tag, epochTime, sticker_id);
 
         String uniqueId = sender.concat(epochTime);
         //add to database

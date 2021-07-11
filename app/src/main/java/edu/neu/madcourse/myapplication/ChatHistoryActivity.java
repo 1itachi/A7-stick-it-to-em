@@ -15,8 +15,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class ChatHistoryActivity extends AppCompatActivity {
@@ -56,11 +54,12 @@ public class ChatHistoryActivity extends AppCompatActivity {
 
         mChat.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatCards.clear();
                 for(DataSnapshot snapshot1 :snapshot.getChildren()){
                     ChatCard chat = snapshot1.getValue(ChatCard.class);
-                    if(chat.getSender().equals(current_user_username) && chat.getReceiver().equals(friend_username) ) {
+                    if((chat.getSender().equals(current_user_username) && chat.getReceiver().equals(friend_username)) ||
+                    (chat.getSender().equals(friend_username) && chat.getReceiver().equals(current_user_username))){
                         chatCards.add(chat);
                     }
                 }
@@ -71,7 +70,7 @@ public class ChatHistoryActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
