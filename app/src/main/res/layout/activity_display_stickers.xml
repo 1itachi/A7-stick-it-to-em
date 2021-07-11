@@ -23,6 +23,8 @@
 
             <ImageButton
                 android:id="@+id/sticker10"
+                android:tag="sticker10"
+                android:onClick="onClickImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
