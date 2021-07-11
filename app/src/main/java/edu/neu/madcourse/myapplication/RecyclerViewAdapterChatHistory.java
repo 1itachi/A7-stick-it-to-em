@@ -36,17 +36,17 @@ public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(@NonNull RecyclerViewAdapterChatHistory.RecyclerViewHolder holder, int position) {
         ChatCard chatCard = chat_card_list.get(position);
 
-        String sticker = chatCard.getSticker();
+        int sticker_id = chatCard.getSticker_id();
         String time = chatCard.getTime();
 
         String sender = chatCard.getSender();
         String receiver = chatCard.getReceiver();
 
         if (sender.equals(current_user_username) && receiver.equals(friend_username)) {
-            holder.senderSticker.setImageResource(R.drawable.sticker1); //replace with custom sticker tag
+            holder.senderSticker.setImageResource(sticker_id);
             holder.senderStickerTime.setText(time);
         } else if(sender.equals(friend_username) && receiver.equals(current_user_username)) {
-            holder.receiverSticker.setImageResource(R.drawable.sticker1); //replace with custom sticker tag
+            holder.receiverSticker.setImageResource(sticker_id);
             holder.receiverStickerTime.setText(time);
         }
     }

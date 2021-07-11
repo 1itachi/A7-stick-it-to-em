@@ -5,14 +5,16 @@ public class ChatCard {
     private String receiver;
     private String sticker;
     private String time;
+    private int sticker_id;
 
     public ChatCard(){}
 
-    public ChatCard(String sender, String receiver, String sticker, String time) {
+    public ChatCard(String sender, String receiver, String sticker, String time, int sticker_id) {
         this.sender = sender;
         this.receiver = receiver;
         this.sticker = sticker;
         this.time = time;
+        this.sticker_id = sticker_id;
     }
 
     public String getSender() {
@@ -45,6 +47,14 @@ public class ChatCard {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getSticker_id() {
+        return sticker_id;
+    }
+
+    public void setSticker_id(int sticker_id) {
+        this.sticker_id = sticker_id;
     }
 
 }
