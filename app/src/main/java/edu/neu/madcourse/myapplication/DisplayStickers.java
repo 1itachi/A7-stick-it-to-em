@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class DisplayStickers extends AppCompatActivity {
     private String current_user_username;
     private String friend_username;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +38,6 @@ public class DisplayStickers extends AppCompatActivity {
 
     private void save_chat(String sender, String receiver, String sticker_tag) {
         // save to firebase
+
     }
 }
