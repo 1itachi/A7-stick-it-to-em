@@ -1,14 +1,19 @@
 package edu.neu.madcourse.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DisplayStickers extends AppCompatActivity {
     private String current_user_username;
@@ -32,12 +37,32 @@ public class DisplayStickers extends AppCompatActivity {
     public void onClickImageButton(View view) {
         String sticker_tag = (String)view.getTag();
         System.out.println("Image clicked for tag " + sticker_tag);
-
-        save_chat(current_user_username, friend_username, sticker_tag);
+        long epochTime=System.currentTimeMillis();
+        save_chat(current_user_username, friend_username, sticker_tag,String.valueOf(epochTime));
     }
 
-    private void save_chat(String sender, String receiver, String sticker_tag) {
+    private void save_chat(String sender, String receiver, String sticker_tag, String epochTime) {
         // save to firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mChat = mDatabase.child("chats");
 
+        //get time
+        ChatCard chat = new ChatCard(sender, receiver, sticker_tag,epochTime );
+
+        String uniqueId = sender.concat(epochTime);
+        //add to database
+        Context context = getApplicationContext();
+        mChat.child(uniqueId).setValue(chat, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference ref) {
+                if (databaseError != null) {
+                    Toast myToast1= Toast.makeText(context, "Failed to send sticker", Toast.LENGTH_LONG);
+                    myToast1.show();
+                } else {
+                    Toast myToast = Toast.makeText(context, chat.getSticker().concat(" Sent!"), Toast.LENGTH_LONG);
+                    myToast.show();
+                }
+            }
+        });
     }
 }
