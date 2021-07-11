@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class HomeScreenActivity extends AppCompatActivity implements RecyclerViewAdapter.UserSummaryListener{
@@ -19,12 +22,24 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<UserCard> userCards = new ArrayList<>();
     private String username;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mUsers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         username = getIntent().getStringExtra("USERNAME");
+
+        UserCard user = new UserCard(username);
+        //reference to firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //get user reference
+        mUsers = mDatabase.child("users");
+        //add user to db
+        mUsers.child(username).setValue(user);
+
         initializeRecyclerView();
 
     }
