@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<RecyclerViewAdapterChatHistory.RecyclerViewHolder>{
 
@@ -38,16 +42,22 @@ public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<Recycle
 
         int sticker_id = chatCard.getSticker_id();
         String time = chatCard.getTime();
+        Long value = Long.parseLong(time);
+        Date date = new Date(value);
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+        String formatted = format.format(date);
+
 
         String sender = chatCard.getSender();
         String receiver = chatCard.getReceiver();
 
         if (sender.equals(current_user_username) && receiver.equals(friend_username)) {
             holder.senderSticker.setImageResource(sticker_id);
-            holder.senderStickerTime.setText(time);
+            holder.senderStickerTime.setText(formatted);
         } else if(sender.equals(friend_username) && receiver.equals(current_user_username)) {
             holder.receiverSticker.setImageResource(sticker_id);
-            holder.receiverStickerTime.setText(time);
+            holder.receiverStickerTime.setText(formatted);
         }
     }
 
