@@ -26,6 +26,7 @@ public class ChatHistoryActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private DatabaseReference mChat;
+    private TextView sticker_count_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +56,25 @@ public class ChatHistoryActivity extends AppCompatActivity {
         mChat.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int sent = 0, received = 0;
                 chatCards.clear();
                 for(DataSnapshot snapshot1 :snapshot.getChildren()){
                     ChatCard chat = snapshot1.getValue(ChatCard.class);
-                    if((chat.getSender().equals(current_user_username) && chat.getReceiver().equals(friend_username)) ||
-                    (chat.getSender().equals(friend_username) && chat.getReceiver().equals(current_user_username))){
+                    if(chat.getSender().equals(current_user_username) && chat.getReceiver().equals(friend_username)){
                         chatCards.add(chat);
+                        sent ++;
+                    }
+                    else if(chat.getSender().equals(friend_username) && chat.getReceiver().equals(current_user_username)){
+                        chatCards.add(chat);
+                        received ++;
                     }
                 }
                 //sort based on epoch time
                 chatCards.sort((c1,c2)->c1.getTime().compareTo(c2.getTime()));
 
                 recyclerViewAdapterChatHistory.notifyDataSetChanged();
+                sticker_count_info = (TextView) findViewById(R.id.userStickerCountTextView);
+                sticker_count_info.append("Stickers sent " + sent + " Received " + received);
             }
 
             @Override

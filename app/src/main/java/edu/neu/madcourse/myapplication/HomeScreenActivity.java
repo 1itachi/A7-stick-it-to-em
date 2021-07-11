@@ -1,6 +1,7 @@
 package edu.neu.madcourse.myapplication;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         username = getIntent().getStringExtra("USERNAME");
 
         TextView user_info = (TextView) findViewById(R.id.userInfoTextView);
+        user_info.setTypeface(null, Typeface.BOLD);
         user_info.append("Hello " + username + ", send a sticker to any of the app users. Click on the user to see history");
         UserCard user = new UserCard(username);
         //reference to firebase
