@@ -18,12 +18,13 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
     private RecyclerView.LayoutManager recyclerViewLayoutManger;
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<UserCard> userCards = new ArrayList<>();
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
+        username = getIntent().getStringExtra("USERNAME");
         initializeRecyclerView();
 
     }
