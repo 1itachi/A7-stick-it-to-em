@@ -56,6 +56,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             this.userSummaryListener = userSummaryListener;
 
             itemView.setOnClickListener(this);
+            sendSticker.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    userSummaryListener.onUserSendStickerButtonClick(getAdapterPosition());
+                }
+            });
         }
 
         @Override
@@ -66,5 +72,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public interface UserSummaryListener{
         void onUserClick(int position);
+        void onUserSendStickerButtonClick(int position);
     }
 }

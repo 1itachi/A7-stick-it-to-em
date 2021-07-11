@@ -65,4 +65,14 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
 
         startActivity(intent);
     }
+
+    @Override
+    public void onUserSendStickerButtonClick(int position) {
+        System.out.println("Send sticker clicked at position " + position);
+
+        Intent intent = new Intent(this, DisplayStickers.class);
+        intent.putExtra("friend_username", userCards.get(position).getUsername());
+
+        startActivity(intent);
+    }
 }
