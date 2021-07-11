@@ -6,13 +6,47 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class HomeScreenActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerViewForAllUsers;
+    private RecyclerView.LayoutManager recyclerViewLayoutManger;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private ArrayList<UserCard> userCards = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        initializeRecyclerView();
+
+    }
+
+    private void initializeRecyclerView() {
+
+        // pre-existing users for testing purposes
+        String[] usernames = getResources().getStringArray(R.array.pre_existing_users);
+
+        // get users from firebase
+        //String[] usernames = getExistingUsers();
+
+        for (String username : usernames) {
+            UserCard userCard = new UserCard(username);
+            userCards.add(userCard);
+        }
+
+        recyclerViewForAllUsers = findViewById(R.id.recyclerViewAllChats);
+
+        recyclerViewLayoutManger = new LinearLayoutManager(this);
+        recyclerViewForAllUsers.setLayoutManager(recyclerViewLayoutManger);
+
+        recyclerViewAdapter = new RecyclerViewAdapter(userCards);
+        recyclerViewForAllUsers.setAdapter(recyclerViewAdapter);
     }
 
     // called upon clicking onClickSeeAllStickers button

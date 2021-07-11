@@ -14,4 +14,9 @@
     <string name="see_all_stickers">See All Stickers</string>
     <string name="username">Username</string>
     <string name="send_sticker">Send Sticker</string>
+    <string-array name="pre_existing_users">
+        <item>alex</item>
+        <item>bob</item>
+        <item>charlie</item>
+    </string-array>
 </resources>
