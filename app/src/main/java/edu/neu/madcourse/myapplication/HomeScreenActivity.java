@@ -76,12 +76,6 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         });
     }
 
-    // called upon clicking onClickSeeAllStickers button
-    public void onClickSeeAllStickersButton(View view) {
-        System.out.println("SeeAllStickers button clicked");
-        startActivity(new Intent(HomeScreenActivity.this, DisplayStickers.class));
-    }
-
     @Override
     public void onUserClick(int position) {
         System.out.println("User clicked at position " + position);
