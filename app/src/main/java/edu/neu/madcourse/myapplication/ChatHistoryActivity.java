@@ -14,9 +14,9 @@ public class ChatHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_history);
 
         Intent intent = getIntent();
-        String fiend_username = intent.getStringExtra("friend_username");
+        String friend_username = intent.getStringExtra("friend_username");
 
         TextView chat_info = (TextView) findViewById(R.id.chatHistoryInfoText);
-        chat_info.append("This is chat history with " + fiend_username);
+        chat_info.append("This is chat history with " + friend_username);
     }
 }

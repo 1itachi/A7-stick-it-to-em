@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -19,6 +23,9 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<UserCard> userCards = new ArrayList<>();
     private String username;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mUsers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,14 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
 
         TextView user_info = (TextView) findViewById(R.id.userInfoTextView);
         user_info.append("Hello " + username + ", send a sticker to any of the app users or see history");
+
+      UserCard user = new UserCard(username);
+        //reference to firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //get user reference
+        mUsers = mDatabase.child("users");
+        //add user to db
+        mUsers.child(username).setValue(user);
 
         initializeRecyclerView();
 
