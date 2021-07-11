@@ -16,9 +16,11 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
 
     private ArrayList<UserCard> user_card_list;
+    private UserSummaryListener userSummaryListener;
 
-    public RecyclerViewAdapter(ArrayList<UserCard> user_card_list) {
+    public RecyclerViewAdapter(ArrayList<UserCard> user_card_list, UserSummaryListener userSummaryListener) {
         this.user_card_list = user_card_list;
+        this.userSummaryListener = userSummaryListener;
     }
 
     @NonNull
@@ -26,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.user_chat_summary, parent, false);
-        return new RecyclerViewHolder(view);
+        return new RecyclerViewHolder(view, userSummaryListener);
     }
 
     @Override
@@ -41,15 +43,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return user_card_list.size();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder{
+    public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView username;
         private Button sendSticker;
+        private UserSummaryListener userSummaryListener;
 
-        public RecyclerViewHolder(@NonNull View itemView) {
+        public RecyclerViewHolder(@NonNull View itemView, UserSummaryListener userSummaryListener) {
             super(itemView);
             username = itemView.findViewById(R.id.usernameTextView);
             sendSticker = itemView.findViewById(R.id.sendStickerButton);
+            this.userSummaryListener = userSummaryListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            userSummaryListener.onUserClick(getAdapterPosition());
+        }
+    }
+
+    public interface UserSummaryListener{
+        void onUserClick(int position);
     }
 }
