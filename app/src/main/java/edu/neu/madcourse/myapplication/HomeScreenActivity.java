@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -35,8 +39,7 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
 
         TextView user_info = (TextView) findViewById(R.id.userInfoTextView);
         user_info.append("Hello " + username + ", send a sticker to any of the app users or see history");
-
-      UserCard user = new UserCard(username);
+        UserCard user = new UserCard(username);
         //reference to firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //get user reference
@@ -44,30 +47,33 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         //add user to db
         mUsers.child(username).setValue(user);
 
-        initializeRecyclerView();
-
-    }
-
-    private void initializeRecyclerView() {
-
-        // pre-existing users for testing purposes
-        String[] usernames = getResources().getStringArray(R.array.pre_existing_users);
-
-        // get users from firebase
-        //String[] usernames = getExistingUsers();
-
-        for (String username : usernames) {
-            UserCard userCard = new UserCard(username);
-            userCards.add(userCard);
-        }
-
+        //recycler view
         recyclerViewForAllUsers = findViewById(R.id.recyclerViewAllChats);
-
         recyclerViewLayoutManger = new LinearLayoutManager(this);
         recyclerViewForAllUsers.setLayoutManager(recyclerViewLayoutManger);
 
         recyclerViewAdapter = new RecyclerViewAdapter(userCards, this);
         recyclerViewForAllUsers.setAdapter(recyclerViewAdapter);
+
+        //Display all users
+        mUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userCards.clear();
+                for(DataSnapshot snapshot1 :snapshot.getChildren()){
+                    UserCard user = snapshot1.getValue(UserCard.class);
+                    if(!user.getUsername().equals(username)) {
+                        userCards.add(user);
+                    }
+                }
+                recyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     // called upon clicking onClickSeeAllStickers button
