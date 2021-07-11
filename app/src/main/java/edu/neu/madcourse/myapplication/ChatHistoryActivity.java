@@ -4,9 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -16,6 +25,9 @@ public class ChatHistoryActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager recyclerViewLayoutManger;
     private RecyclerViewAdapterChatHistory recyclerViewAdapterChatHistory;
     private ArrayList<ChatCard> chatCards = new ArrayList<>();
+
+    private DatabaseReference mDatabase;
+    private DatabaseReference mChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +41,6 @@ public class ChatHistoryActivity extends AppCompatActivity {
         TextView chat_info = (TextView) findViewById(R.id.chatHistoryInfoText);
         chat_info.append("This is chat history with " + friend_username);
 
-        chatCards = getChatFromFirebase();
-
         recyclerViewChatHistory = findViewById(R.id.recyclerChatHistory);
         recyclerViewLayoutManger = new LinearLayoutManager(this);
         recyclerViewChatHistory.setLayoutManager(recyclerViewLayoutManger);
@@ -38,17 +48,33 @@ public class ChatHistoryActivity extends AppCompatActivity {
         recyclerViewAdapterChatHistory = new RecyclerViewAdapterChatHistory(chatCards,
                 current_user_username, friend_username);
         recyclerViewChatHistory.setAdapter(recyclerViewAdapterChatHistory);
+
+        //reference to firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //get user reference
+        mChat = mDatabase.child("chats");
+
+        mChat.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                chatCards.clear();
+                for(DataSnapshot snapshot1 :snapshot.getChildren()){
+                    ChatCard chat = snapshot1.getValue(ChatCard.class);
+                    if(chat.getSender().equals(current_user_username) && chat.getReceiver().equals(friend_username) ) {
+                        chatCards.add(chat);
+                    }
+                }
+                //sort based on epoch time
+                chatCards.sort((c1,c2)->c1.getTime().compareTo(c2.getTime()));
+
+                recyclerViewAdapterChatHistory.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
-    private ArrayList<ChatCard> getChatFromFirebase() {
-        ArrayList<ChatCard> chatCards = new ArrayList<>();
-
-        //dummy
-        ChatCard chatCard1 = new ChatCard("prajakta", "bob", "sticker1", "1232");
-        ChatCard chatCard2 = new ChatCard("bob", "prajakta", "sticker1", "34353");
-        chatCards.add(chatCard1);
-        chatCards.add(chatCard2);
-
-        return chatCards;
-    }
 }
