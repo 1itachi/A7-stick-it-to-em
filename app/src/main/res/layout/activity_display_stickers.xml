@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,22 +14,22 @@
         tools:context=".MainActivity">
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker10"
+            android:id="@+id/sticker10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="81dp"
+            android:layout_marginStart="85dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/custom_image_button"
             android:padding="10dp"
             android:src="@drawable/sticker10" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker12"
+            android:id="@+id/sticker12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker10"
+            android:layout_below="@+id/sticker10"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -38,10 +39,10 @@
             android:src="@drawable/sticker12" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker13"
+            android:id="@+id/sticker13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker12"
+            android:layout_below="@+id/sticker12"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -51,10 +52,10 @@
             android:src="@drawable/sticker13" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker14"
+            android:id="@+id/sticker14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker13"
+            android:layout_below="@+id/sticker13"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -64,10 +65,10 @@
             android:src="@drawable/sticker14" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker15"
+            android:id="@+id/sticker15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker14"
+            android:layout_below="@+id/sticker14"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -77,36 +78,23 @@
             android:src="@drawable/sticker15" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker1"
+            android:id="@+id/sticker2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker15"
+            android:layout_below="@+id/sticker15"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="80dp"
-            android:background="#005"
-            android:padding="10dp"
-            android:src="@drawable/sticker1" />
-
-        <ImageButton
-            android:id="@+id/simpleImageButtonSticker2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker1"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginTop="81dp"
+            android:layout_marginEnd="53dp"
             android:background="#005"
             android:padding="10dp"
             android:src="@drawable/sticker2" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker3"
+            android:id="@+id/sticker3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker2"
+            android:layout_below="@+id/sticker2"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -116,10 +104,10 @@
             android:src="@drawable/sticker3" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker4"
+            android:id="@+id/sticker4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker3"
+            android:layout_below="@+id/sticker3"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -129,10 +117,10 @@
             android:src="@drawable/sticker4" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker5"
+            android:id="@+id/sticker5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker4"
+            android:layout_below="@+id/sticker4"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -141,10 +129,10 @@
             android:padding="10dp"
             android:src="@drawable/sticker5" />
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker6"
+            android:id="@+id/sticker6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker5"
+            android:layout_below="@+id/sticker5"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
@@ -154,36 +142,36 @@
             android:src="@drawable/sticker6" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker7"
+            android:id="@+id/sticker7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker6"
+            android:layout_below="@+id/sticker6"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="95dp"
             android:background="#005"
             android:padding="10dp"
             android:src="@drawable/sticker7" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker8"
+            android:id="@+id/sticker8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker7"
+            android:layout_below="@+id/sticker7"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="52dp"
             android:background="#005"
             android:padding="10dp"
             android:src="@drawable/sticker8" />
 
         <ImageButton
-            android:id="@+id/simpleImageButtonSticker9"
+            android:id="@+id/sticker9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/simpleImageButtonSticker8"
+            android:layout_below="@+id/sticker8"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="85dp"
