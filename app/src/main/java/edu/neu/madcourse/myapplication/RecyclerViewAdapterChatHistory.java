@@ -62,9 +62,6 @@ public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(@NonNull RecyclerViewAdapterChatHistory.RecyclerViewHolder holder, int position) {
         ChatCard chatCard = chat_card_list.get(position);
 
-        System.out.println("position is : " + String.valueOf(position));
-
-
         String sticker_tag = chatCard.getSticker();
         String time = chatCard.getTime();
         Long value = Long.parseLong(time);
