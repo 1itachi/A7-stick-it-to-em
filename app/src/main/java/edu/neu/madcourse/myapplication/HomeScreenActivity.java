@@ -38,7 +38,7 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         username = getIntent().getStringExtra("USERNAME");
 
         TextView user_info = (TextView) findViewById(R.id.userInfoTextView);
-        user_info.append("Hello " + username + ", send a sticker to any of the app users or see history");
+        user_info.append("Hello " + username + ", send a sticker to any of the app users. Click on the user to see history");
         UserCard user = new UserCard(username);
         //reference to firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
