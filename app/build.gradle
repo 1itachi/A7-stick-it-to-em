@@ -45,4 +45,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database'
 
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-inappmessaging:20.0.0'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+
 }

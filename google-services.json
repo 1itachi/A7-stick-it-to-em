@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "218704796466",
+    "firebase_url": "https://mobile-dev-e02eb-default-rtdb.firebaseio.com",
+    "project_id": "mobile-dev-e02eb",
+    "storage_bucket": "mobile-dev-e02eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218704796466:android:059007e292d4bf49c8952b",
+        "android_client_info": {
+          "package_name": "edu.neu.madcourse.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218704796466-562n89m4drtqds6d2meif99uref49kcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmRgdubtnup1MZwHlI34fnilvLH0jANpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218704796466-562n89m4drtqds6d2meif99uref49kcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

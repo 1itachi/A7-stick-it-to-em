@@ -14,6 +14,8 @@
     <string name="see_all_stickers">See All Stickers</string>
     <string name="username">Username</string>
     <string name="send_sticker">Send Sticker</string>
+    <string name="channel_description" />
+    <string name="channel_id" />
     <string-array name="pre_existing_users">
         <item>alex</item>
         <item>bob</item>
