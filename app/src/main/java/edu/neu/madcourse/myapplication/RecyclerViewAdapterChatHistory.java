@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +62,9 @@ public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(@NonNull RecyclerViewAdapterChatHistory.RecyclerViewHolder holder, int position) {
         ChatCard chatCard = chat_card_list.get(position);
 
+        System.out.println("position is : " + String.valueOf(position));
+
+
         String sticker_tag = chatCard.getSticker();
         String time = chatCard.getTime();
         Long value = Long.parseLong(time);
@@ -74,10 +78,14 @@ public class RecyclerViewAdapterChatHistory extends RecyclerView.Adapter<Recycle
 
         if (sender.equals(current_user_username) && receiver.equals(friend_username)) {
             holder.senderSticker.setImageResource(sticker_id_mapping.get(sticker_tag));
+            holder.receiverSticker.setImageResource(0);
             holder.senderStickerTime.setText(formatted);
+            holder.receiverStickerTime.setText("");
         } else if(sender.equals(friend_username) && receiver.equals(current_user_username)) {
             holder.receiverSticker.setImageResource(sticker_id_mapping.get(sticker_tag));
+            holder.senderSticker.setImageResource(0);
             holder.receiverStickerTime.setText(formatted);
+            holder.senderStickerTime.setText("");
         }
     }
 
