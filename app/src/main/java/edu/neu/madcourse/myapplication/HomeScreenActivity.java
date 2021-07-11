@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,6 +78,16 @@ public class HomeScreenActivity extends AppCompatActivity implements RecyclerVie
         System.out.println("User clicked at position " + position);
 
         Intent intent = new Intent(this, ChatHistoryActivity.class);
+        intent.putExtra("friend_username", userCards.get(position).getUsername());
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void onUserSendStickerButtonClick(int position) {
+        System.out.println("Send sticker clicked at position " + position);
+
+        Intent intent = new Intent(this, DisplayStickers.class);
         intent.putExtra("friend_username", userCards.get(position).getUsername());
 
         startActivity(intent);
