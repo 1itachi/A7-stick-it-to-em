@@ -29,8 +29,10 @@ public class DisplayStickers extends AppCompatActivity {
         String sticker_tag = (String)view.getTag();
         System.out.println("Image clicked for tag " + sticker_tag);
 
-        Toast myToast = Toast.makeText(this, "Sticker sent!", Toast.LENGTH_LONG);
-        myToast.show();
+        save_chat(current_user_username, friend_username, sticker_tag);
+    }
 
+    private void save_chat(String sender, String receiver, String sticker_tag) {
+        // save to firebase
     }
 }
