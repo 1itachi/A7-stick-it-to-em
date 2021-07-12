@@ -74,7 +74,7 @@ public class ChatHistoryActivity extends AppCompatActivity {
 
                 recyclerViewAdapterChatHistory.notifyDataSetChanged();
                 sticker_count_info = (TextView) findViewById(R.id.userStickerCountTextView);
-                sticker_count_info.append("Stickers sent " + sent + " Received " + received);
+                sticker_count_info.setText("Stickers sent " + sent + " Received " + received);
             }
 
             @Override
