@@ -25,7 +25,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity {
     private static String TAG = LoginActivity.class.getSimpleName();
-    private static final String SERVER_KEY = "AAAAMuvSWzI:APA91bGmSW15pFeh-c2VyDuke4Oz6YDBSGxiFZFObdDuXsbUe6ecSPZnIp8WY1slnlMNXYPaxREh03bgxqkjH3ecTrDk2q48I7mkpq8TbuZC-1JzgCL_TRFChePN6MFKcTTa3TOh9siO";
     // This is the client registration token
     private static String CLIENT_REGISTRATION_TOKEN;
     private DatabaseReference mDatabase;
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                             CLIENT_REGISTRATION_TOKEN = task.getResult();
                         }
                         Log.e("CLIENT_REGISTRATION_TOKEN", CLIENT_REGISTRATION_TOKEN);
-                        Toast.makeText(LoginActivity.this, "CLIENT_REGISTRATION_TOKEN Existed", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LoginActivity.this, "CLIENT_REGISTRATION_TOKEN Existed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
